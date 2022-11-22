@@ -12,9 +12,9 @@ class Graph
     public:
         Graph();
         ~Graph();
-        bool readGraph(std::string filename);
-        bool readGraphSmall(std::string filename);
-        void generateRandomGraph(int size);
+        bool readGraph(std::string);
+        bool readGraphSmall(std::string);
+        void generateRandomGraph(int);
         bool infDiag();
         int** getMatrix();
         int getCount();
