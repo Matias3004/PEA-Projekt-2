@@ -1,4 +1,4 @@
-#include "Graph.hh"
+#include "../inc/Graph.hh"
 #include <fstream>
 #include <time.h>
 #include <string>
