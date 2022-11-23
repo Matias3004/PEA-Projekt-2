@@ -1,5 +1,6 @@
 #include "../inc/MainMenu.hh"
 #include "../inc/TS.hh"
+#include "../inc/SA.hh"
 #include <iostream>
 
 MainMenu::MainMenu()
@@ -83,6 +84,17 @@ void MainMenu::enable()
             }
             case 5:
             {
+                if (!time || !temperatureFactor)
+                {
+                    std::cout << "Nie podano czasu lub wspołczynnika dT";
+                    std::cin.get();
+                }
+                else
+                {
+                    SimulatedAnnealing sa(graph, time, temperatureFactor);
+                    sa.apply();
+                    std::cin.get();
+                }
                 break;
             }
             case 0:
