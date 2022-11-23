@@ -4,16 +4,16 @@
 
 MainMenu::MainMenu()
 {
-    menu.append("===========================================");
-    menu.append("===============PEA PROJEKT 2===============");
-    menu.append("===========================================");
+    menu.append("===========================================\n");
+    menu.append("===============PEA PROJEKT 2===============\n");
+    menu.append("===========================================\n");
     menu.append("\t1. Podaj czas\n");
     menu.append("\t2. Podaj wspołczynnik dT\n");
     menu.append("\t3. Wczytaj graf\n");
     menu.append("\t4. Tabu Search\n");
     menu.append("\t5. Simulated Annaeling\n");
     menu.append("\t0. Zakończ program\n");
-    menu.append("===========================================");
+    menu.append("===========================================\n");
     menu.append("Twoj wybor: ");
 }
 
@@ -88,7 +88,7 @@ void MainMenu::enable()
             case 0:
                 return;
         }
-        
+
         std::cin.ignore();
         system("clear");
     }
