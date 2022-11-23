@@ -35,7 +35,7 @@ int TabuSearch::calculatePath(std::vector<int> path)
 {
     int cost = 0;
 
-    for (int i = 0; i < path.size() - 1; ++i)
+    for (size_t i = 0; i < path.size() - 1; ++i)
         cost += matrix[path[i]][path[i + 1]];
 
     cost += matrix[path[size - 1]][path[0]];

@@ -38,8 +38,6 @@ double SimulatedAnnealing::calculateTemperature()
     std::vector<int> origin;
 
     int firstToSwap, secondToSwap;
-    int originCost = 0;
-    int neighbourCost = 0;
     int delta = 0;
     int buffer = 0;
 
@@ -69,7 +67,7 @@ int SimulatedAnnealing::calculatePath(std::vector<int> path)
 {
     int cost = 0;
 
-    for (int i = 0; i < path.size() - 1; ++i)
+    for (size_t i = 0; i < path.size() - 1; ++i)
         cost += matrix[path[i]][path[i + 1]];
 
     cost += matrix[path[size - 1]][path[0]];
