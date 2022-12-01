@@ -141,7 +141,6 @@ void SimulatedAnnealing::apply()
                     std::cout << "\nKoszt: " << result << std::endl;
                     std::cout << "Czas znalezienia: " << foundTime << "s" << std::endl;
                     std::cout << "Temperatura końcowa: " << temperature << std::endl;
-                    std::cout << std::endl;
 
                     return;
                 }
