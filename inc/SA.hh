@@ -15,6 +15,7 @@ class SimulatedAnnealing
     public:
         SimulatedAnnealing(Graph, int, double);
         ~SimulatedAnnealing();
+        void saveResultsToFile(std::string, int, double, double);
         std::vector<int> randomPermutation(int);
         double calculateTemperature();
         int calculatePath(std::vector<int>);

@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <ctime>
 #include <iostream>
+#include <fstream>
 #include <random>
 
 TabuSearch::TabuSearch(Graph graph, int time)
@@ -14,6 +15,23 @@ TabuSearch::TabuSearch(Graph graph, int time)
 }
 
 TabuSearch::~TabuSearch() {}
+
+void TabuSearch::saveResultsToFile(std::string filename, int result, double time)
+{
+    std::ofstream file(filename + "-TS.csv");
+    if (file.good() == true)
+    {
+        file << "Rozwiązanie, Błąd [%], Czas [s]" << std::endl;
+        file << result << ",TODO," << time << std::endl;
+
+        file.close();
+    }
+    else
+    {
+        std::cout << "Błąd zapisu" << std::endl;
+        getchar();
+    }
+}
 
 std::vector<int> TabuSearch::randomPermutation(int size)
 {
@@ -58,6 +76,8 @@ void TabuSearch::apply()
     std::clock_t start;
     double time;
     double foundTime;
+
+    std::string filename;
 
     tabuMatrix.resize(size);
 
@@ -112,6 +132,10 @@ void TabuSearch::apply()
 
                         std::cout << "\nKoszt: " << result << std::endl;
                         std::cout << "Czas wykonania przeszukania: " << foundTime << "s" << std::endl;
+                        std::cout << "Podaj nawę pliku do zapisania wyniku: ";
+                        std::cin >> filename;
+
+                        saveResultsToFile(filename, result, foundTime);
 
                         return;
                     }

@@ -5,6 +5,7 @@
 #include <ctime>
 #include <random>
 #include <iostream>
+#include <fstream>
 
 SimulatedAnnealing::SimulatedAnnealing(Graph graph, int time, double rate)
 {
@@ -16,6 +17,23 @@ SimulatedAnnealing::SimulatedAnnealing(Graph graph, int time, double rate)
 }
 
 SimulatedAnnealing::~SimulatedAnnealing() {}
+
+void SimulatedAnnealing::saveResultsToFile(std::string filename, int result, double time, double temperature)
+{
+    std::ofstream file(filename + "-SA.csv");
+    if (file.good() == true)
+    {
+        file << "Rozwiązanie, Błąd [%], Czas [s], Tk" << std::endl;
+        file << result << ",TODO," << time << "," << temperature << std::endl;
+
+        file.close();
+    }
+    else
+    {
+        std::cout << "Błąd zapisu" << std::endl;
+        getchar();
+    }
+}
 
 std::vector<int> SimulatedAnnealing::randomPermutation(int size)
 {
@@ -88,6 +106,8 @@ void SimulatedAnnealing::apply()
 
     std::clock_t start;
 
+    std::string filename;
+
     int firstToSwap, secondToSwap;
     double temperature = temperatureBuffer;
     int result = 1 << 30;
@@ -141,6 +161,10 @@ void SimulatedAnnealing::apply()
                     std::cout << "\nKoszt: " << result << std::endl;
                     std::cout << "Czas znalezienia: " << foundTime << "s" << std::endl;
                     std::cout << "Temperatura końcowa: " << temperature << std::endl;
+                    std::cout << "Podaj nazwę pliku do zapisania wyniku: ";
+                    std::cin >> filename;
+
+                    saveResultsToFile(filename, result, foundTime, temperature);
 
                     return;
                 }

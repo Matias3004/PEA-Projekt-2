@@ -1,6 +1,11 @@
 #pragma once
 #include <string>
+
 #define INF 9999
+// Najlepsze znane rozwiązania poszczegolnych plikow
+#define FTV_47_ATSP = 1776
+#define FTV_170_ATSP = 2755
+#define RGB_403_ATSP = 2465
 
 class Graph
 {

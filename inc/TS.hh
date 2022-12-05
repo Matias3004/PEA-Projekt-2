@@ -15,5 +15,6 @@ class TabuSearch
     public:
         TabuSearch(Graph, int);
         ~TabuSearch();
+        void saveResultsToFile(std::string, int, double);
         void apply();
 };
