@@ -20,5 +20,5 @@ class SimulatedAnnealing
         double calculateTemperature();
         int calculatePath(std::vector<int>);
         double getProbability(int, double);
-        void apply();
+        void apply(std::string, unsigned int);
 };

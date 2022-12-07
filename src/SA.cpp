@@ -98,15 +98,13 @@ double SimulatedAnnealing::getProbability(int diff, double temperature)
     return exp(diff / temperature);
 }
 
-void SimulatedAnnealing::apply()
+void SimulatedAnnealing::apply(std::string filename, unsigned pass)
 {
     std::vector<int> best;
     std::vector<int> permutation = randomPermutation(size);
     std::vector<int> next(permutation);
 
     std::clock_t start;
-
-    std::string filename;
 
     int firstToSwap, secondToSwap;
     double temperature = temperatureBuffer;
@@ -161,9 +159,8 @@ void SimulatedAnnealing::apply()
                     std::cout << "\nKoszt: " << result << std::endl;
                     std::cout << "Czas znalezienia: " << foundTime << "s" << std::endl;
                     std::cout << "Temperatura końcowa: " << temperature << std::endl;
-                    std::cout << "Podaj nazwę pliku do zapisania wyniku: ";
-                    std::cin >> filename;
 
+                    filename.append(std::to_string(pass));
                     saveResultsToFile(filename, result, foundTime, temperature);
 
                     return;

@@ -61,7 +61,7 @@ int TabuSearch::calculatePath(std::vector<int> path)
     return cost;
 }
 
-void TabuSearch::apply()
+void TabuSearch::apply(std::string filename, unsigned pass)
 {
     std::vector<std::vector<int>> tabuMatrix;
     std::vector<int> best;
@@ -76,8 +76,6 @@ void TabuSearch::apply()
     std::clock_t start;
     double time;
     double foundTime;
-
-    std::string filename;
 
     tabuMatrix.resize(size);
 
@@ -132,9 +130,8 @@ void TabuSearch::apply()
 
                         std::cout << "\nKoszt: " << result << std::endl;
                         std::cout << "Czas wykonania przeszukania: " << foundTime << "s" << std::endl;
-                        std::cout << "Podaj nawę pliku do zapisania wyniku: ";
-                        std::cin >> filename;
 
+                        filename.append(std::to_string(pass));
                         saveResultsToFile(filename, result, foundTime);
 
                         return;
